@@ -66,5 +66,18 @@ wash_v4 <- wash_v4 %>% select("v4", "category", "family_index")
 data.table::fwrite(wash_v4, "data/washburn_training_test_v4_unexpressed_v_expressed.csv")
 
 
+# -------------------------------------------
+# Subset out B73 expression from Karl leaf
+# -------------------------------------------
+
+# read in file
+temp <- data.table::fread("data/L3Base_kremling_formatted_v4_hapmapids.csv")
+temp <- data.frame(t(temp[37,]))
+temp$gene <- rownames(temp)
+colnames(temp) <- c("value", "gene")
+temp<- temp[-1,]
+temp$value <- as.numeric(as.character(temp$value))
+data.table::fwrite(temp, "data/b73_l3base_kremling.csv")
+
 
 
