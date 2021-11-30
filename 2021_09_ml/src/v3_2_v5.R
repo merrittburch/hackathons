@@ -77,7 +77,26 @@ temp$gene <- rownames(temp)
 colnames(temp) <- c("value", "gene")
 temp<- temp[-1,]
 temp$value <- as.numeric(as.character(temp$value))
-data.table::fwrite(temp, "data/b73_l3base_kremling.csv")
 
+# Add on all genes with no expression
+gff <- ape::read.gff("data/Zea_mays.B73_RefGen_v4.49.gff3" , 
+                     GFF3 = TRUE)
+# Remove extra columns
+gff <- gff %>% 
+  filter(type == "gene", source == "gramene", seqid %in% c(1,2,3,4,5,6,7,8,9,10)) %>% 
+  select("attributes")
 
+# Parse attributes to get gene names
+gff$attributes <- gsub("ID=gene:", "", gff$attributes)
+gff$attributes <- gsub(";.*", "", gff$attributes)
 
+# Merge expressed genes with all genes to get non-expressed genes
+lala <- merge(temp, gff, 
+              by.x = "gene", by.y = "attributes", 
+              all.y = TRUE)
+
+# If expression = 0 (NA here), replace with 0
+lala[is.na(lala)] <- 0
+
+# write to file
+data.table::fwrite(lala, "data/b73_l3base_kremling.csv")
