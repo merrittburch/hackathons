@@ -27,7 +27,7 @@ mkdir /workdir/hack/output
 
 
 # -------------------
-# Get data from blfs
+# Get data from blfs1
 # -------------------
 
 # RNAseq data
@@ -40,10 +40,18 @@ imeta qu -d sample_title like '%AN20RN%' organism like '%Andropogon gerardii%'
 iget /ibl/home/RawSeqData/RNASeq/andropogoneae/Novogene_10_23_2020/raw_data/AN20RN27/AN20RN27_1.fq.gz
 iget /ibl/home/RawSeqData/RNASeq/andropogoneae/Novogene_10_23_2020/raw_data/AN20RN27/AN20RN27_2.fq.gz
 
-# Search for latest assemblies
-imeta qu -d filetype = 'fasta' and version_status like '%latest%' and isPanAnd = 'yes'0 and organism like '%Andropogon gerardii%'
+# Search for latest assemblies in key genome
+imeta qu -d filetype = 'fasta' and version_status like '%latest%' and isPanAnd = 'yes' and organism like '%Andropogon gerardii%'
 
-# Selecting the same one as travis
+# Search + get latest assemblies all 20 genomes
+imeta qu -d filetype = 'fasta' and version_status like '%latest%' and isPanAnd = 'yes'
+parallel -j 15 "cd /workdir/panand/arun/; iget -T {}" :::: <(imeta qu -d filetype = 'fasta' and version_status like '%latest%' and isPanAnd = 'yes' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}')
+
+# Gather all of Aimee's genomes
+scp -r mbb262@cbsublfs1.biohpc.cornell.edu:/data1/users/ajs692/panand_data/megahit_shortread_assemblies/final_contigs/ /workdir/panand/aimee
+
+
+# Selecting different one as travis for RNAseq alignment
 # collection: /ibl/home/assemblies/andropogoneae/private/Corteva_pop
 # dataObj: Ag-CAM1351-Draft-PanAnd-1.0
 # Andropogon gerardii
