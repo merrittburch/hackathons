@@ -42,9 +42,3 @@ filteredRecords.forEach {
     samWriter.addAlignment(it)
 }
 samWriter.close()
-
-
-// Path to single sam file
-val TranscriptSamDir = "/workdir/mbb262/b73/references/nam_aligned_transcriptomes/Zm-B73-REFERENCE-NAM-5.0.sam"
-
-passesAlignmentFilter(TranscriptSamDir, 0.9, 0.2)
