@@ -107,34 +107,6 @@ mv $FA_TRANSCRIPTOME_DIR/*_eqx.fa /workdir/mbb262/b73/references/unnamed_transcr
 mv $FA_TRANSCRIPTOME_DIR/*_eqx_canonical.fa /workdir/mbb262/b73/references/unnamed_transcripts
 
 
-## Align merged reads to reference transcriptomes -------------------------------------
-
-# Create directories
-mkdir -p /workdir/mbb262/b73/output/minimap_alignments
-
-# Variables
-N_THREADS=20
-PROJ_DIR=/workdir/mbb262/b73
-ALIGN_OUT=$PROJ_DIR/output/minimap_alignments
-REF_TRANS=$PROJ_DIR/references/fa_transcriptomes/Zm-B73-REFERENCE-NAM-5.0_canonical_named.fa
-FASTQC_TRIM=$PROJ_DIR/merged
-
-# unit tests to b73 #1
-# need to get sinle end code from other script
-for i in $FASTQC_TRIM/*_1.fq.gz
-do
-    SAMPLE=$(basename ${i} _1.fq.gz)
-
-    echo "Aligning: " ${SAMPLE}_1.fq.gz ${SAMPLE}_2.fq.gz
-done
-    /programs/minimap2-2.17/minimap2 -ax sr \
-        -t $N_THREADS \
-        --max-qlen 350 \
-        $REF_TRANS \
-        $FASTQC_TRIM/${SAMPLE}_1.fq.gz \
-        $FASTQC_TRIM/${SAMPLE}_2.fq.gz \
-        > $ALIGN_OUT/${SAMPLE}_minimap_to_${GENOME}.sam
-done
 
 
 
