@@ -21,7 +21,16 @@ unzip kotlin-compiler-1.7.10.zip
 export PATH=/workdir/mbb262/kotlinc_1.7.10/bin:$PATH
 export _JAVA_OPTIONS=-Xmx50g
 
+# make output dir
+mkdir /workdir/mbb262/b73/output/counts
+
+# Get all transcript ids
+cd /workdir/mbb262/b73/references/fa_transcriptomes
+grep -e ">" Zm-B73-REFERENCE-NAM-5.0_canonical_named.fa > temp.txt
+sed 's/>//g' temp.txt > all_b73_transcript_ids.txt
+mv all_b73_transcript_ids.txt /workdir/mbb262/b73/output/counts
+
 
 # Run Kotlin script 
 /workdir/mbb262/kotlinc/bin/kotlinc -script \
-    /home/mbb262/git_projects/te_ase_nam/src/04b_count_rnaseq_reads_minimap2.main.kts
+    /home/mbb262/git_projects/te_ase_nam/src/05b_count.main.kts

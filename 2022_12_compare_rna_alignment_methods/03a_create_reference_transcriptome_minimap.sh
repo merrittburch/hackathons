@@ -56,8 +56,12 @@ export _JAVA_OPTIONS=-Xmx50g
 
 # Call Kotlin script 
 /workdir/mbb262/kotlinc/bin/kotlinc -script \
-    /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/
+    /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/03b_select_sam_primary.main.kts \
+    /workdir/mbb262/b73/references/nam_aligned_transcriptomes/Zm-B73-REFERENCE-NAM-5.0.sam 0.9 0.05
 
+# Count the number of things filtered
+wc -l Zm-B73-REFERENCE-NAM-5.0.sam
+wc -l Zm-B73-REFERENCE-NAM-5.0_filtered.sam
 
 ## Format sam files and get actual fasta sequence to align to -------------------
 
@@ -73,12 +77,11 @@ mkdir -p /workdir/mbb262/b73/references/fa_transcriptomes
 SAM_TRANSCRIPTOME_DIR=/workdir/mbb262/b73/references/nam_aligned_transcriptomes
 BAM_TRANSCRIPTOME_DIR=/workdir/mbb262/b73/references/bam_transcriptomes
 FA_TRANSCRIPTOME_DIR=/workdir/mbb262/b73/references/fa_transcriptomes
-export PATH=/programs/samtools-1.15.1/bin:$PATH
 
 # Loop through all transcriptomes and format them
-for i in $SAM_TRANSCRIPTOME_DIR/*.sam
+for i in $SAM_TRANSCRIPTOME_DIR/*filtered.sam
 do
-    SAMPLE=$(basename ${i} .sam)
+    SAMPLE=$(basename ${i} _filtered.sam)
 
     # echo "SAM to BAM to FA to subsampled FA: " $SAM_TRANSCRIPTOME_DIR/${SAMPLE}.sam
     echo -e "SAM to BAM to FA to FA subset: ${SAMPLE}"
@@ -103,9 +106,6 @@ mkdir /workdir/mbb262/b73/references/fai_files
 mkdir /workdir/mbb262/b73/references/unnamed_transcripts
 
 mv $FA_TRANSCRIPTOME_DIR/*fai /workdir/mbb262/b73/references/fai_filess
-mv $FA_TRANSCRIPTOME_DIR/*_eqx.fa /workdir/mbb262/b73/references/unnamed_transcripts
-mv $FA_TRANSCRIPTOME_DIR/*_eqx_canonical.fa /workdir/mbb262/b73/references/unnamed_transcripts
-
 
 
 

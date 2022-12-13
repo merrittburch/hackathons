@@ -109,10 +109,10 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 
 
 // Biological samples
-val fullTranscriptSamDir = "/workdir/mbb262/nam_hybrid_rnaseq/output/minimap_alignments/"
+val fullTranscriptSamDir = "/workdir/mbb262/b73/output/minimap_alignments/"
 
-val outputFullTranscriptFile = "/workdir/mbb262/nam_hybrid_rnaseq/output/counts/nam_inbred_hybrid_minimap_count.txt"
+val outputFullTranscriptFile = "/workdir/mbb262/b73/output/counts/b73_minimap_count.txt"
 
-val transcriptList = "/workdir/mbb262/nam_hybrid_rnaseq/output/counts/all_nam_transcript_ids.txt"
+val transcriptList = "/workdir/mbb262/b73/output/counts/all_b73_transcript_ids.txt"
 
 buildCountMatrixFile(fullTranscriptSamDir, transcriptList, outputFullTranscriptFile, .9, 0.02, 48)
