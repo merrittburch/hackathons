@@ -26,6 +26,7 @@ imeta qu -d sample_title like '2021RNAHybrids_GCLBp1A05' and instrument_model li
 imeta qu -d sample_title like '2021RNAHybrids_GCLBp3H10' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
 
 # Download individual checks of b73
+cd /workdir/tf259/hackathon_dec2022/reads/b73
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R001/MS21R001_CKDL210018333-2a-AK705-GG04_HH5V7DSX2_L1_1.fq.gz
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R001/MS21R001_CKDL210018333-2a-AK705-GG04_HH5V7DSX2_L1_2.fq.gz
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R020/MS21R020_CKDL210018333-2a-GG04-AK705_HH5V7DSX2_L1_1.fq.gz
@@ -44,13 +45,6 @@ iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R087/M
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R087/MS21R087_CKDL210018333-2a-AK30527-AK30018_HH5V7DSX2_L1_2.fq.gz
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R096/MS21R096_CKDL210018333-2a-GF11-GH12_HH5V7DSX2_L1_1.fq.gz
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R096/MS21R096_CKDL210018333-2a-GF11-GH12_HH5V7DSX2_L1_2.fq.gz
-
-
-imeta qu -d sample_title like '2021RNAHybrids_0723p1C01' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
-
-imeta qu -d sample_title like '2021RNAHybrids_0723p1C03' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
-
-
 
 
 
