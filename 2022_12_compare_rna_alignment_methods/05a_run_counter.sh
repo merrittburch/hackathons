@@ -33,4 +33,4 @@ mv all_b73_transcript_ids.txt /workdir/mbb262/b73/output/counts
 
 # Run Kotlin script 
 /workdir/mbb262/kotlinc/bin/kotlinc -script \
-    /home/mbb262/git_projects/te_ase_nam/src/05b_count.main.kts
+    /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/05b_count.main.kts

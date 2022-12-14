@@ -37,6 +37,31 @@ iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R088/M
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R119/MS21R119_CKDL210018333-2a-GE09-AK1954_HH5V7DSX2_L1_1.fq.gz
 iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R119/MS21R119_CKDL210018333-2a-GE09-AK1954_HH5V7DSX2_L1_2.fq.gz
 
+# additional hybrids 
+#b73xmo17
+imeta qu -d sample_title like '2021RNAHybrids_GCLTp4D7' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
+imeta qu -d sample_title like '2021RNAHybrids_GCLTp4A8' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
+imeta qu -d sample_title like '2021RNAHybrids_GCLTp4C9' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
+
+# B73xky21
+imeta qu -d sample_title like '2021RNAHybrids_GCGPp4A6' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
+imeta qu -d sample_title like '2021RNAHybrids_0716p4C6' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
+imeta qu -d sample_title like '2021RNAHybrids_0723p4G6' and instrument_model like '%Illumina NovaSeq 6000%' | grep -v "^-" | awk '{print $2}' | awk '{tmp = $1; getline; print tmp "/" $1}'
+
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R119/MS21R119_CKDL210018333-2a-GE09-AK1954_HH5V7DSX2_L1_1.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R119/MS21R119_CKDL210018333-2a-GE09-AK1954_HH5V7DSX2_L1_2.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R124/MS21R124_CKDL210018333-2a-AK690-7UDI304_HH5V7DSX2_L1_1.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R124/MS21R124_CKDL210018333-2a-AK690-7UDI304_HH5V7DSX2_L1_2.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R134/MS21R134_CKDL210018333-2a-AK850-AK2430_HH5V7DSX2_L1_1.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R134/MS21R134_CKDL210018333-2a-AK850-AK2430_HH5V7DSX2_L1_2.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R233/MS21R233_CKDL210018333-2a-AK17213-7UDI233_HH5V7DSX2_L1_1.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R233/MS21R233_CKDL210018333-2a-AK17213-7UDI233_HH5V7DSX2_L1_2.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R295/MS21R295_CKDL210018333-2a-AK6662-AK30512_HH5V7DSX2_L1_1.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R295/MS21R295_CKDL210018333-2a-AK6662-AK30512_HH5V7DSX2_L1_2.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R362/MS21R362_CKDL210018333-2a-AK30484-7UDI1611_HH5V7DSX2_L1_1.fq.gz
+iget /ibl/home/RawSeqData/RNASeq/Zea/X202SC21060387-Z01-F003/raw_data/MS21R362/MS21R362_CKDL210018333-2a-AK30484-7UDI1611_HH5V7DSX2_L1_2.fq.gz
+
+
 # rename for simplicity
 mv MS21R087_CKDL210018333-2a-AK30527-AK30018_HH5V7DSX2_L1_1.fq.gz b73_1.fq.gz
 mv MS21R087_CKDL210018333-2a-AK30527-AK30018_HH5V7DSX2_L1_2.fq.gz b73_2.fq.gz
@@ -234,4 +259,27 @@ minimap2 -ax sr \
     $REF_TRANS/b73_mo17_combined_genome.fa \
     $FASTQ_TRIM_MERGE_DIR/hybrid_b73_mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/hybridB73Mo17_to_jointB73Mo17_minimap2.sam
 
+# Align hybrid mo17xb73 to b73
+minimap2 -ax sr \
+    -t $N_THREADS \
+    $REF_TRANS/Zm-B73-REFERENCE-NAM-5.0_canonical_named.fa \
+    $FASTQ_TRIM_MERGE_DIR/hybrid_b73_mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/hybridB73Mo17_to_b73_minimap2.sam
+
+# Align hybrid mo17xb73 to mo17
+minimap2 -ax sr \
+    -t $N_THREADS \
+    $REF_TRANS/Zm-Mo17-REFERENCE-YAN-1.0_canonical_named.fa \
+    $FASTQ_TRIM_MERGE_DIR/hybrid_b73_mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/hybridB73Mo17_to_mo17_minimap2.sam
+
+
+# Get transcript names
+cd $REF_TRANS
+grep -e ">" Zm-B73-REFERENCE-NAM-5.0_canonical_named.fa > temp.txt
+sed 's/>//g' temp.txt > $ALIGN_OUT/all_b73_transcript_ids.txt
+
+grep -e ">" Zm-Mo17-REFERENCE-YAN-1.0_canonical_named.fa > temp.txt
+sed 's/>//g' temp.txt > $ALIGN_OUT/all_mo17_transcript_ids.txt
+
+grep -e ">" b73_mo17_combined_genome.fa > temp.txt
+sed 's/>//g' temp.txt > $ALIGN_OUT/all_b73_and_mo17_transcript_ids.txt
 
