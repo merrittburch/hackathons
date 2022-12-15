@@ -50,6 +50,7 @@ cp /workdir/tf259/hackathon_dec2022/reads/simulated_cdna/*.fq.gz /workdir/mbb262
 
 ##  Merge paired reads with BBmerge --------------------------------------------
 
+# For reads all in the main folder
 # Variables
 mkdir /workdir/mbb262/b73/merged_reports
 mkdir /workdir/mbb262/b73/merged
@@ -86,7 +87,8 @@ print
 done
 
 
-# For simulated reads
+# For simulated reads ------------------------------------------
+FASTQ_TRIM=/workdir/tf259/hackathon_dec2022/reads/simulated_cdna_B73_v5
 /programs/bbmap-38.96/bbmerge.sh \
         in1=$FASTQ_TRIM/sample_01_1.fq.gz  \
         in2=$FASTQ_TRIM/sample_01_2.fq.gz \
@@ -104,3 +106,38 @@ done
         in2=$FASTQ_TRIM/sample_03_2.fq.gz \
         out=$MERGE_DIR/sample_03_trimmed_bbmerge.fq.gz \
         ihist=$OUT_DIR_INSERT_SIZE/sample_03_trimmed_bbmerge.txt
+
+
+# For TERRA_MEPP reads that joined the pipeline much later --------------------
+PROJ_DIR=/workdir/mbb262/b73
+FASTQ_TRIM=/workdir/tf259/hackathon_dec2022/reads/TERRA-MEPP
+MERGE_DIR=$PROJ_DIR/merged
+OUT_DIR_INSERT_SIZE=$PROJ_DIR/reads/merged_reports
+
+for i in $FASTQ_TRIM/*_1.trim.fq.gz
+do
+    SAMPLE=$(basename ${i} _1.trim.fq.gz)
+
+    echo "Trimming: " ${SAMPLE}_1.trim.fq.gz ${SAMPLE}_2.trim.fq.gz
+
+    /programs/bbmap-38.96/bbmerge.sh \
+        in1=$FASTQ_TRIM/${SAMPLE}_1.trim.fq.gz  \
+        in2=$FASTQ_TRIM/${SAMPLE}_2.trim.fq.gz \
+        out=$MERGE_DIR/${SAMPLE}_trimmed_bbmerge.fq.gz \
+        ihist=$OUT_DIR_INSERT_SIZE/${SAMPLE}_trimmed_bbmerge.txt
+done
+
+
+# For Karl's 282 reads that joined the pipeline much later ---------------------
+
+# Don't need to merge anything - they're good as is, copy over to merged read dir
+cp /workdir/tf259/hackathon_dec2022/reads/maize282/trimmed_reads/*.trim.fq.gz $MERGE_DIR
+
+
+
+
+
+
+
+
+

@@ -42,3 +42,36 @@ do
       $FASTQC_TRIM/${SAMPLE}.fq.gz > $ALIGN_OUT/${SAMPLE}.sam
 
 done
+
+
+## Get alignment quality with samtools ------------------------------------------
+
+# Try for 1 file
+mkdir /workdir/mbb262/b73/output/minimap_alignments/minimap_stats
+STAT_OUT_DIR=$PROJ_DIR/output/minimap_alignments/minimap_stats
+for i in $ALIGN_OUT/*.sam
+do
+    SAMPLE=$(basename ${i} .sam)
+
+    echo "Getting alignment quality for: " ${SAMPLE}.sam
+
+    /programs/samtools-1.15.1-r/bin/samtools stat \
+        --threads $N_THREADS \
+        ${SAMPLE}.sam > $STAT_OUT_DIR/${SAMPLE}.stat
+done
+
+# Run multiqc on these files
+mkdir $PROJ_DIR/output/minimap_alignments/reports
+FASTQC_OUT=$PROJ_DIR/reports
+export LC_ALL=en_US.UTF-8
+export PYTHONPATH=/programs/multiqc-1.10.1/lib64/python3.6/site-packages:/programs/multiqc-1.10.1/lib/python3.6/site-packages
+export PATH=/programs/multiqc-1.10.1/bin:$PATH
+cd $STAT_OUT_DIR
+multiqc $STAT_OUT_DIR
+
+
+
+
+
+
+
