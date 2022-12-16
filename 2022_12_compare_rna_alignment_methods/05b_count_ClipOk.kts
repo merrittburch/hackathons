@@ -91,7 +91,7 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
         val editDist = currentRecord.getIntegerAttribute("NM")
         val mapQ = currentRecord.mappingQuality
         //Checking both alignmentLengthProp and NM Prop
-        return (!currentRecord.cigar.isClipped() && mapQ > minMapQ  && (alignReadLength.toDouble()/actualReadLength) > minAlignLengthProp && (editDist.toDouble()/alignReadLength) < maxNMProp)
+        return (mapQ > minMapQ  && (alignReadLength.toDouble()/actualReadLength) > minAlignLengthProp && (editDist.toDouble()/alignReadLength) < maxNMProp)
 }
 
 
@@ -111,8 +111,8 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 // Biological samples
 val fullTranscriptSamDir = "/workdir/mbb262/b73/output/minimap_alignments/"
 
-val outputFullTranscriptFile = "/workdir/mbb262/b73/output/counts/b73_minimap_count.txt"
+val outputFullTranscriptFile = "/workdir/mbb262/b73/output/counts/b73_minimap_count_countClipped.txt"
 
 val transcriptList = "/workdir/mbb262/b73/output/counts/all_b73_transcript_ids.txt"
 
-buildCountMatrixFile(fullTranscriptSamDir, transcriptList, outputFullTranscriptFile, .9, 0.02, 48)
+buildCountMatrixFile(fullTranscriptSamDir, transcriptList, outputFullTranscriptFile, .9, 0.05, 35)

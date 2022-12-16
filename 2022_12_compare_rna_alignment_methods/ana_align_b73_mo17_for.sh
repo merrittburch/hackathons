@@ -242,12 +242,14 @@ FASTQ_TRIM_MERGE_DIR=$PROJ_DIR/merged
 
 # Align b73 to b73
 minimap2 -ax sr \
+    --secondary=yes \
     -t $N_THREADS \
     $REF_TRANS/Zm-B73-REFERENCE-NAM-5.0_canonical_named.fa \
     $FASTQ_TRIM_MERGE_DIR/b73_trimmed_bbmerge.fq.gz > $ALIGN_OUT/b73_to_b73_minimap2.sam
 
 # Align mo17 to mo17 
 minimap2 -ax sr \
+    --secondary=yes \
     -t $N_THREADS \
     $REF_TRANS/Zm-Mo17-REFERENCE-YAN-1.0_canonical_named.fa \
     $FASTQ_TRIM_MERGE_DIR/mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/mo17_to_mo17_minimap2.sam
@@ -255,18 +257,21 @@ minimap2 -ax sr \
 
 # Align hybrid mo17xb73 to hybrid genome ---> forgot this one
 minimap2 -ax sr \
+    --secondary=yes \
     -t $N_THREADS \
     $REF_TRANS/b73_mo17_combined_genome.fa \
     $FASTQ_TRIM_MERGE_DIR/hybrid_b73_mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/hybridB73Mo17_to_jointB73Mo17_minimap2.sam
 
 # Align hybrid mo17xb73 to b73
 minimap2 -ax sr \
+    --secondary=yes \
     -t $N_THREADS \
     $REF_TRANS/Zm-B73-REFERENCE-NAM-5.0_canonical_named.fa \
     $FASTQ_TRIM_MERGE_DIR/hybrid_b73_mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/hybridB73Mo17_to_b73_minimap2.sam
 
 # Align hybrid mo17xb73 to mo17
 minimap2 -ax sr \
+    --secondary=yes \
     -t $N_THREADS \
     $REF_TRANS/Zm-Mo17-REFERENCE-YAN-1.0_canonical_named.fa \
     $FASTQ_TRIM_MERGE_DIR/hybrid_b73_mo17_trimmed_bbmerge.fq.gz > $ALIGN_OUT/hybridB73Mo17_to_mo17_minimap2.sam
