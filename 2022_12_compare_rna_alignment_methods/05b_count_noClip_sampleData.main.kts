@@ -111,7 +111,7 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 // Biological samples
 val fullTranscriptSamDir = "/workdir/mbb262/b73/output/minimap_alignments/copy_samples/"
 
-val outputFullTranscriptFile = "/workdir/mbb262/b73/output/counts/b73_minimap_count_discardClipped.txt"
+val outputFullTranscriptFile = "/workdir/mbb262/b73/output/counts/b73_minimap_count_sampleData.txt"
 
 val transcriptList = "/workdir/mbb262/b73/output/counts/all_b73_transcript_ids.txt"
 
