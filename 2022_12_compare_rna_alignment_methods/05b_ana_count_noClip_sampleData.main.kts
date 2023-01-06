@@ -96,32 +96,32 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 
 
 // B73 
-val fullTranscriptSamDir = "/workdir/mbb262/ase/output/minimap_alignments/b73"
+val fullTranscriptSamDir_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73"
 
-val outputFullTranscriptFile = "/workdir/mbb262/ase/output/counts/b73_counts.txt"
+val outputFullTranscriptFile_b73 = "/workdir/mbb262/ase/output/counts/b73_counts.txt"
 
-val transcriptList = "/workdir/mbb262/b73/output/counts/all_b73_transcript_ids.txt"
+val transcriptList_b73 = "/workdir/mbb262/b73/output/counts/all_b73_transcript_ids.txt"
 
-buildCountMatrixFile(fullTranscriptSamDir, transcriptList, outputFullTranscriptFile, .9, 0.05, 35)
+buildCountMatrixFile(fullTranscriptSamDir_b73, transcriptList_b73, outputFullTranscriptFile_b73, .9, 0.05, 35)
 
 
 // Mo17
-val fullTranscriptSamDir = "/workdir/mbb262/ase/output/minimap_alignments/m017"
+val fullTranscriptSamDir_mo17 = "/workdir/mbb262/ase/output/minimap_alignments/m017"
 
-val outputFullTranscriptFile = "/workdir/mbb262/ase/output/counts/mo17_counts.txt"
+val outputFullTranscriptFile_mo17 = "/workdir/mbb262/ase/output/counts/mo17_counts.txt"
 
-val transcriptList = "/workdir/mbb262/b73/output/counts/all_mo17_transcript_ids.txt"
+val transcriptList_mo17 = "/workdir/mbb262/b73/output/counts/all_mo17_transcript_ids.txt"
 
-buildCountMatrixFile(fullTranscriptSamDir, transcriptList, outputFullTranscriptFile, .9, 0.05, 35)
+buildCountMatrixFile(fullTranscriptSamDir_mo17, transcriptList_mo17, outputFullTranscriptFile_mo17, .9, 0.05, 35)
 
 
 // B73 x Mo17 hybrid 
-val fullTranscriptSamDir = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/"
+val fullTranscriptSamDir_hybrid = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/"
 
-val outputFullTranscriptFile = "/workdir/mbb262/ase/output/counts/hybrid_b73_mo17_counts.txt"
+val outputFullTranscriptFile_hybrid = "/workdir/mbb262/ase/output/counts/hybrid_b73_mo17_counts.txt"
 
-val transcriptList = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/all_b73_and_mo17_transcript_ids.txt"
+val transcriptList_hybrid = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/all_b73_and_mo17_transcript_ids.txt"
 
-buildCountMatrixFile(fullTranscriptSamDir, transcriptList, outputFullTranscriptFile, .9, 0.05, 35)
+buildCountMatrixFile(fullTranscriptSamDir_hybrid, transcriptList_hybrid, outputFullTranscriptFile_hybrid, .9, 0.05, 35)
 
 
