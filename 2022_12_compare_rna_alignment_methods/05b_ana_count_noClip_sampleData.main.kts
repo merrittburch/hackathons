@@ -96,13 +96,13 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 
 
 // B73 
-val fullTranscriptSamDir_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73"
+// val fullTranscriptSamDir_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73"
 
-val outputFullTranscriptFile_b73 = "/workdir/mbb262/ase/output/counts/b73_counts.txt"
+// val outputFullTranscriptFile_b73 = "/workdir/mbb262/ase/output/counts/b73_counts.txt"
 
-val transcriptList_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73/all_b73_transcript_ids.txt"
+// val transcriptList_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73/all_b73_transcript_ids.txt"
 
-buildCountMatrixFile(fullTranscriptSamDir_b73, transcriptList_b73, outputFullTranscriptFile_b73, .9, 0.05, 35)
+// buildCountMatrixFile(fullTranscriptSamDir_b73, transcriptList_b73, outputFullTranscriptFile_b73, .9, 0.05, 35)
 
 
 // Mo17
@@ -116,12 +116,12 @@ buildCountMatrixFile(fullTranscriptSamDir_mo17, transcriptList_mo17, outputFullT
 
 
 // B73 x Mo17 hybrid 
-val fullTranscriptSamDir_hybrid = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/"
+// val fullTranscriptSamDir_hybrid = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/"
 
-val outputFullTranscriptFile_hybrid = "/workdir/mbb262/ase/output/counts/hybrid_b73_mo17_counts.txt"
+// val outputFullTranscriptFile_hybrid = "/workdir/mbb262/ase/output/counts/hybrid_b73_mo17_counts.txt"
 
-val transcriptList_hybrid = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/all_b73_and_mo17_transcript_ids.txt"
+// val transcriptList_hybrid = "/workdir/mbb262/ase/output/minimap_alignments/b73mo17/all_b73_and_mo17_transcript_ids.txt"
 
-buildCountMatrixFile(fullTranscriptSamDir_hybrid, transcriptList_hybrid, outputFullTranscriptFile_hybrid, .9, 0.05, 35)
+// buildCountMatrixFile(fullTranscriptSamDir_hybrid, transcriptList_hybrid, outputFullTranscriptFile_hybrid, .9, 0.05, 35)
 
 

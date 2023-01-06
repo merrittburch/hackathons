@@ -186,12 +186,17 @@ find /workdir/mbb262/ase/references -maxdepth 1 -name '*.fa' > $PRIMARY_DIR/refG
 find $PRIMARY_DIR/ -maxdepth 1 -name '*.bed' > $PRIMARY_DIR/genomeBeds.list
 parallel --link "bedtools getfasta -name -s -fi {1} -bed {2/} -fo {1/.}.fasta" :::: refGenome.list :::: genomeBeds.list 
 
-# Append genome name to fasta files
+
+# Do last bit of formatting to read names
 for i in $PRIMARY_DIR/*.fasta
 do
     SAMPLE=$(basename ${i} .fasta)
 
-    sed "/^>/s/$/_${SAMPLE}/" $PRIMARY_DIR/${SAMPLE}.fasta > $FA_TRANSCRIPTOME_DIR/${SAMPLE}_named.fa
+    # Remove where in each reference the seqeunce was pulled from
+    sed 's/:.*//' $PRIMARY_DIR/${SAMPLE}.fasta > $PRIMARY_DIR/${SAMPLE}_shortNames.fasta
+
+    # Append genome name to fasta files
+    sed "/^>/s/$/_${SAMPLE}/" $PRIMARY_DIR/${SAMPLE}_shortNames.fasta > $FA_TRANSCRIPTOME_DIR/${SAMPLE}_named.fa
 done
 
 
@@ -277,8 +282,8 @@ mkdir /workdir/mbb262/ase/output/counts
 
 # Run Kotlin script 
 # Modify in the script the name of the transcript file, the directory to the sams, and the out dir
-/workdir/mbb262/kotlinc/bin/kotlinc -script \
-    /home/mbb262/git_projects/hackathons/05b_ana_count_noClip_sampleData.main.sh
+/home/mbb262/bioinformatics/kotlinc/bin/kotlinc -script \
+    /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/05b_ana_count_noClip_sampleData.main.kts
 
 
 
