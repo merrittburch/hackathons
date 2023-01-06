@@ -14,7 +14,7 @@ import java.io.File
 */
 fun buildCountMatrixFile(samDir : String, inputTranscriptListFile: String ,outputFileName:String ,minAlignLengthProp: Double, maxNMProp: Double, minMapQ: Int = 48) {
     val transcriptNames = Utils.getBufferedReader(inputTranscriptListFile).readLines().sorted()
-    
+
     Utils.getBufferedWriter(outputFileName).use { output ->
             //add header
             output.write("\t${transcriptNames.joinToString("\t")}\n")
@@ -101,7 +101,7 @@ val fullTranscriptSamDir_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b7
 
 val outputFullTranscriptFile_b73 = "/workdir/mbb262/ase/output/counts/b73_counts.txt"
 
-val transcriptList_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73/all_b73_transcript_ids.txt"
+val transcriptList_b73 = "/workdir/mbb262/ase/output/minimap_alignments/all_b73_transcript_ids.txt"
 
 buildCountMatrixFile(fullTranscriptSamDir_b73, transcriptList_b73, outputFullTranscriptFile_b73, .9, 0.05, 35)
 
