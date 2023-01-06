@@ -96,7 +96,7 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 
 
 // B73 
-// val fullTranscriptSamDir_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73"
+// val fullTranscriptSamDir_b73 = "/workdir/mbb262/ase/output/minimap_alignments/b73/"
 
 // val outputFullTranscriptFile_b73 = "/workdir/mbb262/ase/output/counts/b73_counts.txt"
 
@@ -106,11 +106,11 @@ fun passesAlignmentFilter(currentRecord: SAMRecord, minAlignLengthProp: Double, 
 
 
 // Mo17
-val fullTranscriptSamDir_mo17 = "/workdir/mbb262/ase/output/minimap_alignments/m017"
+val fullTranscriptSamDir_mo17 = "/workdir/mbb262/ase/output/minimap_alignments/mo17/"
 
 val outputFullTranscriptFile_mo17 = "/workdir/mbb262/ase/output/counts/mo17_counts.txt"
 
-val transcriptList_mo17 = "//workdir/mbb262/ase/output/minimap_alignments/mo17/all_mo17_transcript_ids.txt"
+val transcriptList_mo17 = "/workdir/mbb262/ase/output/minimap_alignments/mo17/all_mo17_transcript_ids.txt"
 
 buildCountMatrixFile(fullTranscriptSamDir_mo17, transcriptList_mo17, outputFullTranscriptFile_mo17, .9, 0.05, 35)
 
