@@ -62,10 +62,14 @@ done
 
 # Run multiqc on these files
 mkdir $PROJ_DIR/output/minimap_alignments/reports
+PROJ_DIR=/workdir/mbb262/b73
+STAT_OUT_DIR=$PROJ_DIR/output/minimap_alignments/minimap_stats
 FASTQC_OUT=$PROJ_DIR/reports
-export LC_ALL=en_US.UTF-8
-export PYTHONPATH=/programs/multiqc-1.10.1/lib64/python3.6/site-packages:/programs/multiqc-1.10.1/lib/python3.6/site-packages
-export PATH=/programs/multiqc-1.10.1/bin:$PATH
+
+export PYTHONPATH=/programs/multiqc-1.13/lib64/python3.9/site-packages:/programs/multiqc-1.13/lib/python3.9/site-packages
+export PATH=/programs/multiqc-1.13/bin:$PATH
+
+multiqc
 cd $STAT_OUT_DIR
 multiqc $STAT_OUT_DIR
 

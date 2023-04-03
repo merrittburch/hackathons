@@ -34,3 +34,18 @@ mv all_b73_transcript_ids.txt /workdir/mbb262/b73/output/counts
 # Run Kotlin script 
 /workdir/mbb262/kotlinc/bin/kotlinc -script \
     /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/05b_count.main.kts
+
+# Count clipped reads
+/workdir/mbb262/kotlinc/bin/kotlinc -script \
+  /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/05b_count_ClipOk.kts
+
+# Don't count clipped reads
+/workdir/mbb262/kotlinc/bin/kotlinc -script /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/05b_count_noClip.main.kts
+
+
+/workdir/mbb262/kotlinc/bin/kotlinc -script /home/mbb262/git_projects/hackathons/2022_12_compare_rna_alignment_methods/05b_count_noClip_sampleData.main.kts
+
+
+
+
+
