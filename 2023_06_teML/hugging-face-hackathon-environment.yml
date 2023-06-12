@@ -1,0 +1,10 @@
+name: hugging-face
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - ipywidgets
+  - jupyterlab
+  - nvtop
+  - transformers
+prefix: /home2/mbb262/.conda/envs/hugging-face
