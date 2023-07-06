@@ -7,6 +7,7 @@
 # Description:
 # Extract the upstream sequences within 10kb that contain TEs
 # (i.e. extract all TE sequences within 10 kb of each gene)
+# Code modified from Jingjing
 # ------------------------------------------------------------------------------
 
 # Install packages
